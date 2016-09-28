@@ -1,0 +1,18 @@
+Serial number Sequences
+1.
+2.
+3.
+
+Procedure
+
+Step 1: Page Select table -> Columns option -> VarStatus: vs (ur wish)
+
+Step 2: Choose Particular Column -> Label(Heading)
+
+Step 3: In Components Search -> Output Text -> (Drag and drop it)
+
+Step 4: In Output Text: Value option: #{vs.index+1}
+
+Save it and run.......
+
+You Will Get Sequences
