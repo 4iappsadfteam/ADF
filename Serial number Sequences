@@ -5,7 +5,7 @@ Serial number Sequences
 
 Procedure
 
-Step 1: Page Select table -> Columns option -> VarStatus: vs (ur wish)
+Step 1: Page ->> Select table(In Structure Properties) -> Columns option -> VarStatus: vs (ur wish)
 
 Step 2: Choose Particular Column -> Label(Heading)
 
