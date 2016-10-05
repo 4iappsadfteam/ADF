@@ -1,0 +1,37 @@
+Two type of DB conncetion in ADF
+
+1. Data soure URL(drag and drop in jdev)
+2. Data source in console
+
+Create Data Source in console
+
+Create Data Source
+
+1. Use a browser to go to the WLS Console, 
+    for example http://somehost:7001/console/login/LoginForm.jsp
+
+2. On the home page, click the Data Sources link.
+
+3. On the Summary of JDBC Data Sources page click the New button (Generic data source)
+
+4. Choose the Name, JNDI Name, and select the Database Type (Oracle). 
+   Click Next to confirm and continue;
+
+5. Choose the Database Driver. This is depending on the selected Database Type. 
+   We used Thin XA for Instance connections for the Data Sources created in the project. Click Next;   
+
+6. Click Next after you read the Transaction Options;
+
+7. Enter the Connection Properties and after that Next to confirm and continue:
+    
+    Database Name
+    Host Name
+    Port
+    Database User Name
+    Password
+    
+8. Click the Test Connection button, and if the test succeeded click next;
+
+9. On the Select Targets page check for example the AdminServer. Click finish.
+
+
