@@ -24,11 +24,11 @@ Create Data Source
 
 7. Enter the Connection Properties and after that Next to confirm and continue:
     
-    Database Name
-    Host Name
-    Port
-    Database User Name
-    Password
+    Database Name       - SID Name
+    Host Name           - IP Adddress
+    Port                - Port Number
+    Database User Name  - User 
+    Password            - password
     
 8. Click the Test Connection button, and if the test succeeded click next;
 
