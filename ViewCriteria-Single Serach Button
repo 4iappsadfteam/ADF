@@ -1,0 +1,42 @@
+//BindingContainer-- BindingContext-- Am-- Data control--View object--Operation
+
+import oracle.adf.model.BindingContainer;
+import oracle.adf.model.OperationBinding;
+
+import oracle.adf.model.binding.DCBindingContainer;
+import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.adf.model.BindingContext;
+
+import oracle.jbo.Row;
+import oracle.jbo.ViewObject;
+import oracle.jbo.ViewCriteria;
+import oracle.jbo.ViewCriteriaRow;
+   
+
+
+    public void searchButton(ActionEvent actionEvent) {
+    String id=it1.getValue().toString();  
+    System.out.println(id);
+
+    DCBindingContainer bc= (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+    
+    DCIteratorBinding it=bc.findIteratorBinding("Emp_VOIterator");
+    
+	ViewObject vo=it.getViewObject();
+    	
+	ViewCriteria vc=vo.createViewCriteria();
+    
+	ViewCriteriaRow vcr=vc.createViewCriteriaRow();
+    	
+	vcr.setAttribute("EmployeeId", id);
+    
+	vc.addRow(vcr);
+    
+	vo.applyViewCriteria(vc);
+    	
+	vo.executeQuery();
+    	
+	// Row r=vo.first(); (we are using viewCriteria so no need)
+        
+    }
