@@ -1,4 +1,4 @@
-//BindingContainer-- BindingContext-- Am-- Data control--View object--Operation
+//BindingContext-- BindingContainer-- Am-- Data control--View object--Operation
 
 import oracle.adf.model.BindingContainer;
 import oracle.adf.model.OperationBinding;
