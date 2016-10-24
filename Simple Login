@@ -1,0 +1,167 @@
+1) create login.jsf page with 2 input text (login + pwd) and 1 command button
+ 
+2) go to the login bean page and add 2 new attributes :
+    private String login;
+    private String password;
+and generate  getters n setters for these 2 attributes
+ 
+3) return to the login.jsf
+go to the value of each input text created in step 1 and relate them with the attributes created in step 2
+ 
+4)create java class:
+public class UserInfo {
+    private int id;
+    private String login;
+    private String password;
+    private String firstName;
+    private String lastName;
+//add the attributes that you need from your DB table, if you don't need to use firstName n lastName remove them
+//generate getters n setters for these attributes
+}
+ 
+5) in your applicationModuleImpl create new method:
+    public UserInfo testUser(String login,String password){
+            UserInfo user =   null;
+//get your ViewObject that contain the login and pwd i used AgentView1 as example
+            ViewObject vo = getAgentView1();
+            ViewCriteria vc = vo.createViewCriteria();
+            ViewCriteriaRow vcr1 = vc.createViewCriteriaRow();
+            vcr1.setAttribute("Login", login); //change "Login" by the name of your attribute in the DB table
+            vcr1.setAttribute("Pwd", password);//change "Pwd" by name of your attribute in the DB table
+            vc.add(vcr1);
+            vo.applyViewCriteria(vc);
+            vo.executeQuery();
+            if(vo.hasNext()){
+             user = new UserInfo();
+             Row row = vo.next();
+ 
+            String name = (String)row.getAttribute("Login");
+            user.setLogin(name);
+ 
+            String pas = (String)row.getAttribute("Pwd");
+            user.setPassword(pas);
+ 
+            String nom = (String)row.getAttribute("Nom");
+            user.setNom(nom);
+          
+            String prenom = (String)row.getAttribute("Prenom");
+            user.setPrenom(prenom);
+          
+            Number id = (Number)row.getAttribute("IdAg");
+            user.setId(id.intValue());
+          
+            }
+            return user;
+    }
+6)go to your login bean page and create new method:
+    public String Login() {
+        // Add event code here...
+        String amDef = "AM.AppModule";
+        String config = "AppModuleLocal";
+        ApplicationModule ami = oracle.jbo.client.Configuration.createRootApplicationModule(amDef,config);
+        AppModuleImpl am = (AppModuleImpl)ami;
+        UserInfo user = am.testUser(login,password);
+        if (user == null){
+            FacesMessage msg = new FacesMessage ("Veuillez verifier votre login ou votre mot de passe!!!");
+            FacesContext.getCurrentInstance().addMessage(null,msg);
+            return null;
+        }else{
+          //test if your input text are empty??
+           //i make it1 as the id of the first input text and it2 for the second one
+            if ((it1.getValue()== null || it1.getValue().equals("")|| it1.getValue().toString().isEmpty())||(it2.getValue()== null || it2.getValue().equals("")|| it2.getValue().toString().isEmpty())){
+                FacesMessage msg = new FacesMessage ("Veuillez verifier votre login ou votre mot de passe!!!");
+                FacesContext.getCurrentInstance().addMessage(null,msg);
+                return null;
+            }else{
+            }return "Page_home";
+        }
+    }
+ 
+7) finnaly,
+go to login.jsf and set the action of the command button to Login()
+
+
+*********************************************Program***************************************************
+
+
+public class UserData {
+    private int userId;
+    private String userName;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+}
+
+
+******************************************************************
+    public UserData findUser(String _username, String _password) {
+        UserData user=null;
+        ViewObject vo= getUser_VO1();
+        ViewCriteria vc=vo.createViewCriteria();
+        ViewCriteriaRow vcr=vc.createViewCriteriaRow();
+        
+        vcr.setAttribute("Username", _username);
+        vcr.setAttribute("Password", _password);       
+        vc.add(vcr);
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
+        
+        if(vo.hasNext()) {
+            user =new UserData();
+            Row row=vo.next();
+            user.setUserName(row.getAttribute("Username").toString());
+        }
+        
+        
+        return user;
+    }
+***********************************************************************
+    public String loginAction() {
+        // Add event code here...
+        FacesMessage message;
+        FacesContext context=FacesContext.getCurrentInstance();
+        String amDef="model.AppModule";
+        String config="AppModuleLocal";
+            
+            ApplicationModule ami=Configuration.createRootApplicationModule(amDef, config);
+            AppModuleImpl am =(AppModuleImpl)ami;
+            
+            UserData user=am.findUser(UserName, Password);
+            if(user==null) {
+                    message=new FacesMessage(FacesMessage.SEVERITY_ERROR,"User Not Found","");
+                    }else{
+                        message=new FacesMessage(FacesMessage.SEVERITY_INFO,"User Found "+user.getUserName(),"");
+            try {
+                context.getExternalContext().redirect("HomePage.jsf");
+            } catch (IOException e) {
+            }
+        }
+        
+        context.addMessage("", message);
+        
+        return null;
+    }
+
+*********************************************************************************************************
+
+
+
+
+
+
+
+
+
