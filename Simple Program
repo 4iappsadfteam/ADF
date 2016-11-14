@@ -1,0 +1,3 @@
+Partial Trigger:
+
+AdfFacesContext.getCurrentInstance().addPartialTarget(getOutputText());
