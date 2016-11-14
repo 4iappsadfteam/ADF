@@ -1,3 +1,29 @@
-Partial Trigger:
+ADF Operation Binding:
+DCBindingContainer binding=(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+OperationBinding op=(OperationBinding)binding.getOperationBinding("Commit");
+op.execute();
 
+ADF Iterator Binding:
+DCIteratorBinding iter=binding.findIteratorBinding("VO_Resources1Iterator");
+iter.executeQuery();
+
+Partial Trigger:
 AdfFacesContext.getCurrentInstance().addPartialTarget(getOutputText());
+
+
+PopUp Dialog: OK/Cancel-Program(DialogListener- Create Method)
+
+public void closePopUp(DialogEvent dialogEvent) {
+        if(dialogEvent.getOutcome().name().equals("ok")) {
+           DCBindingContainer binding=(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+           OperationBinding op=(OperationBinding)binding.getOperationBinding("Commit");
+            op.execute();
+           DCIteratorBinding iter=binding.findIteratorBinding("VO_Resources1Iterator");
+            iter.executeQuery();
+           AdfFacesContext.getCurrentInstance().addPartialTarget(gantt2);
+        }else if(dialogEvent.getOutcome().name().equals("cancel")) {
+            DCBindingContainer binding=(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+            OperationBinding op=(OperationBinding)binding.getOperationBinding("Rollback");
+            op.execute();   
+            AdfFacesContext.getCurrentInstance().addPartialTarget(getGantt2());
+        }
