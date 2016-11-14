@@ -1,0 +1,11 @@
+Dialog Event- ok and cancel Program
+   
+   
+   
+   public void popUpclose(DialogEvent dialogEvent) {
+        if(dialogEvent.getOutcome().name().equals("ok")){
+            ADFUtile.findOperation("Commit").execute();
+        }else if(dialogEvent.getOutcome().name().equals("cancel")) {
+                 ADFUtile.findOperation("Rollback").execute();
+             }
+    }
