@@ -1,0 +1,53 @@
+package view;
+
+
+import oracle.adf.model.BindingContext;
+
+import oracle.adf.model.binding.DCBindingContainer;
+
+import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.binding.BindingContainer;
+import oracle.binding.OperationBinding;
+
+
+
+/*
+ * DcBindingContainer bind=(DcBindingContainer)BindingContex.getCurrent.getCurrentBindingEntry();
+ * DCIteratorBinding iter=bind.getDcBindingContainer().findIteratorBinding("iteratorName");
+ * iter.executeQuery();
+ * Operation op=bind.getDcBindingContainer().getOperationBinding("Commit");
+ * op.execute();
+ * 
+ * */
+
+public class ADFUtils {
+
+public static BindingContainer getBidingContainer() {
+    return BindingContext.getCurrent().getCurrentBindingsEntry();
+}
+
+
+public static DCBindingContainer getDcBindingContainer(){
+    return (DCBindingContainer) getBidingContainer();
+}
+
+public static DCIteratorBinding findIterator(String name){
+    DCIteratorBinding iter=getDcBindingContainer().findIteratorBinding(name);
+    if(iter==null) {
+        throw new RuntimeException("Iterator"+name+"not found");
+    }
+    return iter;
+}
+
+
+public static OperationBinding findoperation(String name){
+    OperationBinding op=getDcBindingContainer().getOperationBinding(name);
+    if(op==null){
+        throw new RuntimeException("operation binding"+name+"Not Found");
+    }
+    return op;
+}
+}
+
+
