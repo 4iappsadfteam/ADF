@@ -1,2 +1,57 @@
 ADF Serach box like Google Search Page
 
+create EO, VO, AM for employee Table
+
+                                Search Box for Employee name (First name)
+                                
+ Create LOV in Employee name Attributes
+ Create Page for in View Controller
+ Page: split into 2 
+        1. Top pannel  
+        2. Bottom pannel
+ In Bottom panel page Employee table
+ 
+ In top panel:
+ * Surround with SubForm
+ * Inside SubForm: 
+              1. Drag and drop Employee(FirstName) Attribute -> -> (select input: not input lov)
+              
+              2. From Component select input with label and 1 button(Search Button)
+              In Search Button: 
+                    Action Listener Program:
+                        public void searchItem(ActionEvent actionEvent) 
+                        {
+                        String id= this.it1.getValue().toString();
+                        DCBindingContainer bindings =  (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+                        DCIteratorBinding dcIteratorBindings =bindings.findIteratorBinding("Emp_View1Iterator");
+                        ViewObject vo=dcIteratorBindings.getViewObject();
+                        ViewCriteria vc = vo.createViewCriteria();
+                        ViewCriteriaRow vcRow = vc.createViewCriteriaRow();
+                        vcRow.setAttribute("FirstName", id);
+                        vc.addRow(vcRow);
+                        vo.applyViewCriteria(vc);
+                        vo.executeQuery();   
+                        }
+               3. From Component Select AutoSuggestBehaviour ----> drag and drop on input with label
+               4. In AutoSuggestBehaviour Properties Select the binding --> (Firstname LOV)
+               5. SubForm Panel -> select defalutcommand (b1-search button) it's like Enter Button
+               6.Table Partial Trigger ->  in subForm
+               
+                    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
