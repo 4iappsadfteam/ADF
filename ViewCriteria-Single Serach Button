@@ -40,3 +40,27 @@ import oracle.jbo.ViewCriteriaRow;
 	// Row r=vo.first(); (we are using viewCriteria so no need)
         
     }
+    
+    
+    
+    
+    
+    
+    ******2 search button****************************
+    
+        public void searchItem(ActionEvent actionEvent) {
+        
+        String id= this.it1.getValue()==null?"":this.it1.getValue().toString();
+        String id1= this.it3.getValue()==null?"":this.it3.getValue().toString();
+        
+            DCBindingContainer bindings =  (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+            DCIteratorBinding dcIteratorBindings =bindings.findIteratorBinding("Emp_View1Iterator");
+            ViewObject vo=dcIteratorBindings.getViewObject();
+            ViewCriteria vc = vo.createViewCriteria();
+            ViewCriteriaRow vcRow = vc.createViewCriteriaRow();
+            vcRow.setAttribute("FirstName", id);
+            vcRow.setAttribute("PhoneNumber", id1);        
+            vc.addRow(vcRow);
+            vo.applyViewCriteria(vc);
+            vo.executeQuery();           
+            }
