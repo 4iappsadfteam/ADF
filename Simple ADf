@@ -1,0 +1,4 @@
+edit button disable
+button render 
+table-> {currentrow ne null}
+
