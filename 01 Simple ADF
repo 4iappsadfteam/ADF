@@ -2,3 +2,11 @@ edit button disable
 button render 
 table-> {currentrow ne null}
 
+****************************************************************
+
+Sequence: Empoyee+1
+
+(new oracle.jbo.server.SequenceImpl("EMPLOYEES_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+
+
+****************************************************************
