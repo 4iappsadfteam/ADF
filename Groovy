@@ -1,0 +1,16 @@
+
+adf.currentDate         : To reference the current date with time truncated 
+adf.currentDateTime     : To reference the current date and time 
+
+********************************************************************************
+                                                          CREATE SEQUENCE EMPLOYEES_SQE
+                                                          START WITH 5
+                                                          INCREMENT BY 1
+                                                          maxvalue 9999
+                                                          NOCYCLE;
+
+    Sequence: Empoyee+1
+
+    (new oracle.jbo.server.SequenceImpl("EMPLOYEES_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+
+***********************************************************************************************************************
