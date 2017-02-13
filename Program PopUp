@@ -1,0 +1,17 @@
+************Programmatically Pop Up*************************    
+    
+    
+    
+    public void onClickTest(ActionEvent actionEvent) {
+        RichPopup.PopupHints hints = new RichPopup.PopupHints();
+        RichPopup pop = getPop2();
+        pop.show(hints);
+
+    }
+
+
+    public String NewAdd() {
+        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+        OperationBinding method = (OperationBinding) bindings.getOperationBinding("Create");
+        Object result = method.execute();
+        return null;
