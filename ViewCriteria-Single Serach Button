@@ -64,3 +64,27 @@ import oracle.jbo.ViewCriteriaRow;
             vo.applyViewCriteria(vc);
             vo.executeQuery();           
             }
+	    
+	   
+******************************3 search button*********Word caps*******************   
+
+
+ public void onClickSearch(ActionEvent actionEvent) {
+        String emp= this.it1.getValue()==null?"":this.it1.getValue().toString();
+        String name= this.it2.getValue()==null?"":this.it2.getValue().toString().toLowerCase();
+        String name2 = WordUtils.capitalize(name);
+        System.err.println(name2);
+        String dep= this.it3.getValue()==null?"":this.it3.getValue().toString();
+        
+        DCBindingContainer bindings =  (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding dcIteratorBindings =bindings.findIteratorBinding("EmployeeVO1Iterator");
+        ViewObject vo=dcIteratorBindings.getViewObject();
+        ViewCriteria vc = vo.createViewCriteria();
+        //ViewCriteria vc = vo.getViewCriteria(EmployeeVOCriteria);
+        ViewCriteriaRow vcRow = vc.createViewCriteriaRow();
+        vcRow.setAttribute("EmployeeId", emp);
+        vcRow.setAttribute("FirstName", name2);
+        vcRow.setAttribute("DepartmentId", dep);        
+        vc.addRow(vcRow);
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
