@@ -1,6 +1,6 @@
 edit button disable
 button render 
-table-> {currentrow ne null}
+table-> {Iteratorcurrentrow eq null}
 
 ****************************************************************
 
