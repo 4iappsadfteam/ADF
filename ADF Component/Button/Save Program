@@ -1,0 +1,30 @@
+
+public void onClickSubmit(ActionEvent actionEvent) {
+        try {
+            ViewObject vo =
+                ADFUtils.findIterator("XxbfmFacilityBgTrx_VO1Iterator").getViewObject();
+            Row currentRow = vo.getCurrentRow();
+            if (currentRow.getAttribute("DocuNo") == null) {
+                String refNO =
+                    "OBG".concat(currentRow.getAttribute("FacilityBgTrxId").toString());
+
+                currentRow.setAttribute("DocuNo", refNO);
+              
+                ADFUtils.invokeEL("#{bindings.Commit.execute}");
+                utils.displayMessage("Bank Guarantee Outwards Saved Successfully with Ref.No " +
+                                     refNO, "");
+                String retFlag=create_action("BG_OUT", "-1",
+                               currentRow.getAttribute("FacilityBgTrxId"));
+                if("Y".equals(retFlag)) {
+                    utils.displayMessage("Bank Guarantee Outwards send for Approval.", "");   
+                }
+            } else {
+
+                ADFUtils.invokeEL("#{bindings.Commit.execute}");
+                utils.displayMessage("Bank Guarantee Outwards Saved Successfully.",
+                                     "");
+            }
+        } catch (Exception e) {
+            System.err.println("===E===" + e.toString());
+        }
+    }
