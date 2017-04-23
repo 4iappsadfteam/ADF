@@ -1,0 +1,22 @@
+Train Css
+
+af|train::join {
+    width: 110px; 
+    height: 8px; 
+}
+
+af|train::stop-icon-selected {
+    background-color: #1367AE; 
+}
+af|train::stop-icon-visited {
+    background-color: #25A189;
+}
+af|train::stop-icon-disabled {
+    background-color: #595D5E;
+}
+af|train::stop-icon-unvisited {
+    background-color: #595D5E;
+}
+af|train::unvisited-stop-icon {
+    background-color: #595D5E;
+}
