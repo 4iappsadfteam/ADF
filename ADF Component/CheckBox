@@ -1,0 +1,43 @@
+Check Box:
+
+Query Panel Search:
+DECODE(ACTIVE_YN,'Y','true','N','false') as STATUS_PARAM
+
+
+********************************************************************************
+Table Column inside(Check box- Read):
+Normal Active Attribute used 
+
+
+
+********************************************************************************
+Table Column inside(Check box- Read and Write)
+Transient Check Box - Boolean Type
+____________________View Row Impl
+ public Boolean getCancelFlag() {
+       Boolean flag = false;
+       if (this.getPoCancel() != null &&
+           this.getPoCancel().equalsIgnoreCase("Y")) {
+           flag = true;
+       } else {
+           flag = false;
+       }
+       return flag;
+//        return (Boolean) getAttributeInternal(CANCELFLAG);
+   }
+
+   /**
+    * Sets <code>value</code> as the attribute value for the calculated attribute CancelFlag.
+    * @param value value to set the  CancelFlag
+    */
+   public void setCancelFlag(Boolean value) {
+       if (value) {
+           this.setPoCancel("Y");
+       } else {
+           this.setPoCancel("N");
+       }
+       setAttributeInternal(CANCELFLAG, value);
+   }
+Murali • 12:02 PM
+
+
