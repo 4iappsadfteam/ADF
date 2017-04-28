@@ -1,0 +1,45 @@
+
+
+
+*********************************************************************************************************************
+
+af|dialog{
+  -tr-default-content-width : -1;
+  -tr-default-content-height : -1;
+}
+
+*********************************************************************************************************************
+
+
+af|dialog {
+    -tr-default-content-width: -1;
+    -tr-default-content-height: -1;
+    background-color: Highlight;
+    border-color: #006262; 
+}
+af|dialog::title {
+    color: #002e4e;
+}
+
+*********************************************************************************************************************
+Faces Message: Hide Button
+
+af|dialog::footer-content af|button {
+    visibility: hidden;
+}
+
+
+
+
+
+-tr-default-content-width: 
+  The root style, af|dialog, contains skinning property "-tr-default-content-width" 
+    that provides the default contentWidth 
+    if not provided when stretching is turned on, "stretchChildren=first". The default is 250 pixels.
+
+-tr-default-content-height
+  The root style, af|dialog, contains skinning property "-tr-default-content-height" 
+  that provides the default contentHeight 
+  if not provided when stretching is turned on, "stretchChildren=first". The default is 250 pixels.
+  
+
