@@ -1,0 +1,18 @@
+
+FacesMessage Icon Change:
+
+*******************************************************************************************************************
+
+af|messages::info-icon
+{
+  content: url("../../information.png"); 
+}
+
+af|messages::warning-icon
+{
+  content: url("../../warning.png"); 
+}
+af|messages::error-icon
+{
+  content: url("../../error.png"); 
+}
