@@ -1,0 +1,5 @@
+If-- HO or BK Present
+
+Below Condition Enable:
+
+#{bindings.Prefix.inputValue eq 'HO' ? 'true' : (bindings.Prefix.inputValue eq 'BK' ? 'true' : 'false')}
