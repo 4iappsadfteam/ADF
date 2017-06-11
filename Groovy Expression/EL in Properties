@@ -1,0 +1,3 @@
+Radio button based lable change
+                    #{bindings.SourceType.inputValue eq 'S' ? 'Supplier Name':'Customer Name'}
+                    #{bindings.SourceType.inputValue eq 'S' ? 'Supplier Site ':'Customer Site'}
