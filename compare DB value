@@ -1,0 +1,35 @@
+
+input value compare with Db value
+
+
+**************************************************************************************************
+
+public void onClickLogin(ActionEvent actionEvent) throws IOException {
+        String name=this.it1.getValue()==null?"":this.it1.getValue().toString();
+        System.err.println("page enter name: "+name);
+        String lname=this.it2.getValue()==null?"":this.it2.getValue().toString();
+        
+        DCBindingContainer bindings =  (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding dcIteratorBindings =bindings.findIteratorBinding("Logincheck_VO1Iterator");
+        ViewObject vo=dcIteratorBindings.getViewObject();
+        RowSetIterator rs= vo.createRowSetIterator("");
+        System.err.println("loop in ");
+        while(rs.hasNext()){
+            Row r= rs.next();
+            String fname=r.getAttribute("FirstName").toString();
+            System.err.println("Names: "+fname);
+            String lastname=r.getAttribute("FirstName").toString();
+            System.err.println("Names: "+lname);
+            if(fname.equals(name)&&lastname.equals(lname)){
+                System.err.println("OK");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("untitled2.jspx");
+            }else{
+                System.err.println("none");
+                FacesMessage Message = new FacesMessage("User not Found in Data Base");   
+                Message.setSeverity(FacesMessage.SEVERITY_INFO);   
+                FacesContext fc = FacesContext.getCurrentInstance();   
+                fc.addMessage(null, Message);
+            }
+        }
+        
+    }
