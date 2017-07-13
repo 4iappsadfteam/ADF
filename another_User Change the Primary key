@@ -1,0 +1,6 @@
+
+
+   DCIteratorBinding dcIterator = ADFUtils.findIterator("BillCustomerModifyVOIterator");
+           Key parentKey = dcIterator.getCurrentRow().getKey();
+           applModule.getDBTransaction().rollback();
+           dcIterator.setCurrentRowWithKey(parentKey.toStringFormat(true));
