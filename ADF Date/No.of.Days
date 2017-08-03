@@ -1,0 +1,29 @@
+
+1. Function receive two oracle dates 
+2. return the number of days (difference) 
+ 
+ e.g. If you send 2013/07/20 , 2013/07/13
+      Output: 7
+
+
+public static long getDifferenceDaysBetweenTwoDates(oracle.jbo.domain.Date d1, oracle.jbo.domain.Date d2)
+  {
+    if(d1 != null && d2 != null)
+    {
+      return (d1.getValue().getTime() - d2.getValue().getTime())/(24 * 60 * 60 * 1000);
+    }
+    return 0;
+  }
+  ______________________________________________________________________________________________________________
+  
+  oracle.jbo.domain.Date st = (oracle.jbo.domain.Date)id2.getValue(); 
+  System.err.println("---JBO S Date==="+st);
+  oracle.jbo.domain.Date retDate = (oracle.jbo.domain.Date)id5.getValue(); 
+  System.err.println("---JBO Red Date==="+retDate);
+  //getting result in long value 
+  long nDays=getDifferenceDaysBetweenTwoDates(st, retDate);
+  //conver into number
+  oracle.jbo.domain.Number noDays= new oracle.jbo.domain.Number(nDays);
+  System.err.println("======retDate no of Days======"+noDays);    
+  
+  
