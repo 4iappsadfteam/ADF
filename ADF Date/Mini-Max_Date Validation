@@ -1,0 +1,26 @@
+
+
+
+    private Date minDate = new Date();
+
+    public Date getMaxDateVal() {
+           Calendar cal = Calendar.getInstance();
+           cal.setTime(new Date());
+           //cal.setTime(id1.getMinValue());
+           cal.add(Calendar.DATE, 10); 
+           return cal.getTime();
+       }
+
+
+     public Date getMinDate() {
+       try {
+         Calendar cal = Calendar.getInstance();
+         java.util.Date date = cal.getTime();//id1.getMinValue()
+         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+         String currentDate = formatter.format(date);
+         minDate = formatter.parse(currentDate);
+         return formatter.parse(currentDate);
+        } catch (Exception e) {
+            return null;
+               }
+        }
