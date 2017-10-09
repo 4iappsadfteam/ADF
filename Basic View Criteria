@@ -1,0 +1,25 @@
+
+
+CASE 1: I have already created a view criteria in EmployeeVO, and I want to call it programmatically.
+    public void searchEmployee(Number employeeId) {
+        ViewObjectImpl vo = getEmployeesView1();
+        ViewCriteria vc = vo.getViewCriteria("findEmployeeVC");
+        vo.applyViewCriteria(vc);
+        vo.setNamedWhereClauseParam("pEmployeeId", employeeId);
+        vo.executeQuery();
+    }
+
+CASE 2: I want to create a view criteria dynamically and execute it programmatically.
+    public void searchByEmployeeIdEmail(Number employeeId, String email) {
+        ViewObjectImpl vo = getEmployeesView2();
+        ViewCriteria vc = vo.createViewCriteria();
+        ViewCriteriaRow vcRow = vc.createViewCriteriaRow();
+        
+        vcRow.setAttribute("EmployeeId", employeeId);
+        vc.addRow(vcRow);
+        vcRow.setAttribute("Email", email);
+        vc.addRow(vcRow);
+        
+        vo.applyViewCriteria(vc);
+        vo.executeQuery();
+    }
