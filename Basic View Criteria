@@ -23,3 +23,9 @@ CASE 2: I want to create a view criteria dynamically and execute it programmatic
         vo.applyViewCriteria(vc);
         vo.executeQuery();
     }
+    
+    Case 3: Direct Binding
+    ViewObject functionVO;
+    functionVO.setNamedWhereClauseParam("p_code", "SELL_PAY_APP");
+    functionVO.executeQuery();
+
