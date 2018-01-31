@@ -1,0 +1,89 @@
+
+
+
+af|panelBox::header-start:core:default {
+    background-image: none;
+    background-color: #e0eff9;
+}
+
+af|panelBox::header-end:core:default {
+    background-image: none;
+    background-color: #e0eff9;
+}
+
+af|panelBox::header-center:core:default {
+    background-image: none;
+    background-color: #e0eff9;
+    padding: 10px;
+}
+
+af|panelBox::header-element {
+    font-size: 13px;
+    color: #565656;
+}
+
+af|panelBox::center:core:default {
+    background-image: none;
+    border: 1px solid #E1E1E8;
+    background: #F9F9F9;
+}
+
+
+af|panelBox::footer-start:core:default {
+    display: none;
+}
+
+af|panelBox::footer-center:core:default {
+    display: none;
+}
+
+af|panelBox::footer-end:core:default {
+    display: none;
+}
+
+af|panelBox::disclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../images/open.gif");
+    outline: none;
+    cursor: pointer;
+}
+
+af|panelBox::disclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    background: url("../images/open.gif")!important;
+    outline: none;
+}
+
+af|panelBox::disclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    background: url("../images/open.gif")!important;
+    outline: none;
+}
+
+af|panelBox::undisclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../images/close.gif");
+    outline: none;
+    cursor: pointer;
+}
+
+af|panelBox::undisclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    outline: none;
+    background: url("../images/close.gif")!important;
+}
+
+af|panelBox::undisclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    outline: none;
+    background: url("../images/close.gif")!important;
+}
+
+Refre: http://blog.danduvenki.com/2013/12/panel-box-skinning-in-adf.html
+
