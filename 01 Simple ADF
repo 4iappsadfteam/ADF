@@ -1,7 +1,9 @@
 edit button disable
 button render 
 table-> {Iteratorcurrentrow eq null}
-
+--------------------------
+Edit Button
+disabled="#{bindings.SearchProperty_ROVO1.estimatedRowCount eq 0}" N  "::qryId1"  in edit
 ****************************************************************
 in EO
 
